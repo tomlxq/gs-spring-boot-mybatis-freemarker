@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tom.mappers.CityMapper">
+    <resultMap id="CityResultMap" type="City">
+        <id property="id" column="id" />
+        <result property="name" column="name" />
+        <result property="state" column="state" />
+        <result property="country" column="country" />
+    </resultMap>
+    <select id="selectCityById" resultType="City">
+        select * from city where id = #{id}
+    </select>
+    <select id="likeName" resultMap="CityResultMap" parameterType="string" resultType="list">
+        SELECT *
+        FROM city
+        WHERE NAME LIKE CONCAT('%',#{name},'%')
+    </select>
+</mapper>
