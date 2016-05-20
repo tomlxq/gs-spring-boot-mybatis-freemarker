@@ -5,21 +5,28 @@
 <mapper namespace="com.tom.mappers.UserMapper">
 
     <resultMap id="UserResultMap" type="User">
-        <id column="id"  property="id"  />
-        <result column="name"  property="name"  />
-        <result column="email"  property="email"  />
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="email" property="email"/>
     </resultMap>
-
+    <!--查询所有用户  -->
     <select id="findAllUsers" resultMap="UserResultMap">
-        select id, name, email from users
+        select * from users
     </select>
-
+    <!--查询一个用户  -->
     <select id="findUserById" resultMap="UserResultMap">
-        select id, name, email from users WHERE id=#{id}
+        select * from users WHERE id=#{id}
     </select>
-
+    <!--增加一个用户  -->
     <insert id="insertUser" parameterType="User" useGeneratedKeys="true" keyProperty="id">
         insert into users(name,email) values(#{name},#{email})
     </insert>
-
+    <!--更新一个用户  -->
+    <update id="updateUser" parameterType="User">
+            UPDATE users SET name=#{name}, email=#{email} WHERE id=#{id}
+        </update>
+    <!--删除一个用户 -->
+    <delete id="deleteUser">
+        DELETE from users WHERE id=#{id}
+    </delete>
 </mapper>

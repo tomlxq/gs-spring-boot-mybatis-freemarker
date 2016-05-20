@@ -8,8 +8,7 @@ public class User extends IdEntity {
     private String email;
     public User() {
     }
-    public User(Long id, String name, String email) {
-        this.id=id;
+    public User(String name, String email) {
         this.name=name;
         this.email=email;
     }

@@ -14,9 +14,7 @@ import java.util.Properties;
  */
 @Configuration
 public class MyBatisConfiguration {
-
     private static final Logger logger = LoggerFactory.getLogger(MyBatisConfiguration.class);
-
     @Bean
     public PageHelper pageHelper() {
         logger.info("注册MyBatis分页插件PageHelper");
